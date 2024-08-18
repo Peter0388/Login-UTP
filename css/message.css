@@ -1,0 +1,54 @@
+/* Estilos para mensajes de alerta */
+.message-container {
+    margin-bottom: 1rem;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 auto;
+    max-width: 400px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+
+.message.success {
+    background-color: #28a745;
+}
+.message.recaptcha {
+    color: #dc3545;
+}
+.message.blocked {
+    background-color: #dc3545;
+}
+.message.intentos {         
+    background-color: #dc3545;  
+}
+.msg.error {
+    color: #dc3545;
+    font-size: 18.5px;
+}
+
+
+.message-container + .login-box {
+    margin-top: 20px; /* Ajustar el espacio entre el mensaje y el formulario de login */
+}
+
+#attempts-message {
+    position: absolute; 
+    top: 100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; 
+    z-index: 10;
+}
+
+#error-message-blocked {
+    position: absolute; 
+    top: 100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; 
+    z-index: 10; 
+}
