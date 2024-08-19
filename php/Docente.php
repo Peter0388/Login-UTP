@@ -1,32 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Docente</title>
+    <link rel="stylesheet" href="https://unpkg.com/jam-icons/css/jam.min.css">
     <link rel="stylesheet" href="../css/home.css">
+    <title>UTP</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand ms-5 text-light" href="#">UTP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto me-5">
-            <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-light" href="#">Registrar Notas</a>
-            </li>
-        </ul>
-        </div>
-    </div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">UTP Docente</div>
+            <div class="navbar-menu" id="navbar-menu">
+                <!-- <a href="#">Inicio</a> -->
+                <!-- <a href="#">Perfil</a> -->
+                <?php
+                    session_start();
+                    if (isset($_SESSION['username'])) {
+                        echo '
+                            <div class="info-user">
+                                <div>
+                                    <span class="text-body"> Bienvenido, <strong>' . $_SESSION['username'] . '</strong> </span>
+                                </div>
+                                <div>
+                                    <span class="text-body rol"> Rol: ' . $_SESSION['role'] . '</span>
+                                </div>
+                            </div>';
+                    }
+                ?>
+                <button class="btn-cerrar-sesion" onclick="handleLogout()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 0.5rem;">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Cerrar Sesión
+                </button>
+            </div>
+            <button class="navbar-toggle" id="navbar-toggle">
+                <span class="jam jam-menu"></span>
+            </button>
+        </div> 
     </nav>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="../js/scripts.js"></script>
 </body>
 </html>

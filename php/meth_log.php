@@ -51,7 +51,7 @@ if ($responseKeys['success']) {
 
             if ($user['tipo_rol'] == 'Admin') {
                 $_SESSION['role'] = 'Admin';
-                header("Location: admin.php");
+                header("Location: Admin.php");
             } else if ($user['tipo_rol'] == 'Docente') {
                 $_SESSION['role'] = 'Docente';
                 header("Location: Docente.php");

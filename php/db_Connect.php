@@ -1,9 +1,9 @@
 <?php
     class ConectarBD {
-        private $servername = "localhost";
-        private $username = "root";
-        private $password = "";
-        private $dbname = "logindw";
+        private $servername = "database-utp.czkuw6smefsd.us-east-2.rds.amazonaws.com";
+        private $username = "admin";
+        private $password = "Utepino2024";
+        private $dbname = "datautp";
         public $conn;
 
         public function __construct() {

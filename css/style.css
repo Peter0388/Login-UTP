@@ -145,7 +145,19 @@ body{
     background: linear-gradient(270deg, transparent, #56aac2);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
-  }
+}
+
+.text-name {
+    color: #ffffff; /* Color blanco para el texto */
+    margin-right: 1rem; /* Margen derecho */
+    font-size: 1.1rem; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    align-self: center; /* Centrado vertical */
+    padding: 5px 10px; /* Espaciado interno */
+    background-color: #343a40; /* Fondo oscuro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
   
   @keyframes btn-anim3 {
     0% {
