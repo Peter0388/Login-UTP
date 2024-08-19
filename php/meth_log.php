@@ -49,6 +49,14 @@ if ($responseKeys['success']) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['cod_usu'] = $user['cod_usu']; // Establecer el código de usuario en la sesión
 
+            // Registrar intento exitoso en auditoría
+            $auditSql = "INSERT INTO tb_auditoria (cod_usu, fecha_evento, inicio_sesion) 
+                         VALUES (?, NOW(), 'exitoso')";
+            $auditStmt = $conn->prepare($auditSql);
+            $auditStmt->bind_param("i", $user['cod_usu']);
+            $auditStmt->execute();
+            $auditStmt->close();
+
             if ($user['tipo_rol'] == 'Admin') {
                 $_SESSION['role'] = 'Admin';
                 header("Location: Admin.php");
@@ -62,6 +70,14 @@ if ($responseKeys['success']) {
         } else {
             // Incrementar el contador de intentos fallidos
             $_SESSION['attempts'] += 1;
+            
+            // Registrar intento fallido en auditoría
+            $auditSql = "INSERT INTO tb_auditoria (cod_usu, fecha_evento, inicio_sesion) 
+                         VALUES (?, NOW(), 'fallido')";
+            $auditStmt = $conn->prepare($auditSql);
+            $auditStmt->bind_param("i", $user['cod_usu']);
+            $auditStmt->execute();
+            $auditStmt->close();
 
             // Verificar si se alcanzó el límite de intentos
             if ($_SESSION['attempts'] >= 3) {
